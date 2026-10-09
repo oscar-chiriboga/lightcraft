@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n  <meta name="theme-color" content="#1c1c1c">\n  <meta name="apple-mobile-web-app-capable" content="yes">\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n  <meta name="apple-mobile-web-app-title" content="LightCraft">\n  <link rel="manifest" href="./manifest.webmanifest">\n  <link rel="apple-touch-icon" href="./mobile-icon.svg">
   <title>LightCraft</title>
   <link rel="icon" href="data:,">
   <meta name="description" content="LightCraft: open-source photo library and raw developer, running in your browser (WASM).">
@@ -21,7 +21,7 @@
   <canvas id="lightcraft_canvas"></canvas>
   <div id="lightcraft_loading">Loading LightCraft…</div>
   <div id="lightcraft_status" aria-live="polite"></div>
-  <script type="module">
+  <script>\n    if ("serviceWorker" in navigator && location.protocol === "https:") {\n      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(console.warn));\n    }\n  </script>\n  <script type="module">
     import init, { start, command } from "./lightcraft_web.js";
     (async () => {
       // The Chinese font is a separate file: embedding it would exceed the host's WASM size limit.
