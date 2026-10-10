@@ -15,12 +15,14 @@ use crate::LightcraftApp;
 use crate::theme::Tokens;
 use crate::widgets::register;
 
+#[cfg_attr(target_arch = "wasm32", allow(dead_code))]
 #[derive(Clone, Copy)]
 enum Kind {
     Inspect,
     Import,
 }
 
+#[cfg_attr(target_arch = "wasm32", allow(dead_code))]
 enum Message {
     Inspected(Result<Value, String>),
     Prepared(Result<Box<lightcraft_engine::lightroom_job::PreparedLightroom>, String>),
@@ -37,6 +39,7 @@ enum Phase {
 /// A Lightroom task in flight.  The receiver is polled from the egui owner thread.
 pub struct LightroomTask {
     kind: Kind,
+    #[cfg_attr(target_arch = "wasm32", allow(dead_code))]
     path: PathBuf,
     cancel: Arc<AtomicBool>,
     total: Arc<AtomicUsize>,
